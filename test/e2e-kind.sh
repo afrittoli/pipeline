@@ -60,6 +60,5 @@ else
   run_e2e
 fi
 
-
 (( failed )) && fail_test
 success
