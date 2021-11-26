@@ -44,12 +44,12 @@ function set_feature_gate() {
 function run_e2e() {
   # Run the integration tests
   header "Running Go e2e tests"
-  go_test_e2e -timeout=20m ./test/... || failed=1
+  go_test_e2e -timeout=40m ./test/... || failed=1
 
   # Run these _after_ the integration tests b/c they don't quite work all the way
   # and they cause a lot of noise in the logs, making it harder to debug integration
   # test failures.
-  go_test_e2e -tags=examples -timeout=20m ./test/ || failed=1
+  # go_test_e2e -tags=examples -timeout=20m ./test/ || failed=1
 }
 
 if [ "$PIPELINE_FEATURE_GATE" == "" ]; then
