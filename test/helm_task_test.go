@@ -41,11 +41,11 @@ var (
 // TestHelmDeployPipelineRun is an integration test that will verify a pipeline build an image
 // and then using helm to deploy it
 func TestHelmDeployPipelineRun(t *testing.T) {
-	repo := ensureDockerRepo(t)
 	ctx := context.Background()
 	ctx, cancel := context.WithCancel(ctx)
 	defer cancel()
 	c, namespace := setup(ctx, t)
+	repo := "registry.local:5000/helmtasktest"
 	setupClusterBindingForHelm(ctx, c, t, namespace)
 
 	var (
